@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -18,7 +19,7 @@ genre.get('/genre/:id/:page?', async ( req, res)=>{
 
 
     try {
-        const genreone = await axios.get(genrelink, {
+        const genreone = await aniwatchGet(genrelink, {
             headers:{
                 'User-Agent': USER_AGENT,
             }
@@ -27,7 +28,7 @@ genre.get('/genre/:id/:page?', async ( req, res)=>{
 
         const $ = cheerio.load(receivegenre);
 
-        const nextpageani = await axios.get(genrelinkanni, {
+        const nextpageani = await aniwatchGet(genrelinkanni, {
             headers:{
                 'User-Agent': USER_AGENT,
             }
