@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -18,7 +19,7 @@ shedule.get('/shedule/:id', async function( request, response){
         const date = request.params.id;
         const shedulewebsite = `https://aniwatchtv.to/ajax//schedule/list?tzOffset=-330&date=${date}`;
 
-        const responseshedule = await axios.get(shedulewebsite, {
+        const responseshedule = await aniwatchGet(shedulewebsite, {
             headers:{
                 'User-Agent': USER_AGENT,
                 "Accept-Encoding": ACCEPT_ENCODING_HEADER,
