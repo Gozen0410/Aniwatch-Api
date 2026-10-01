@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -18,7 +19,7 @@ app.get('/parse', async (req, res) => {
     const websiteUrl = 'https://aniwatchtv.to/home';
 
     // Fetch HTML content from the website
-    const response = await axios.get(websiteUrl, {
+    const response = await aniwatchGet(websiteUrl, {
       headers:{
         'User-Agent': USER_AGENT,
       }
