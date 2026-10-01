@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require("axios");
 const crypto = require("crypto");
@@ -202,7 +203,7 @@ src1.get('/src-server/:id', async (req, res) => {
     try {
         const servernum = parseInt(req.params.id);
         const serverlink = `https://aniwatchtv.to/ajax/v2/episode/sources?id=${servernum}`;
-        const serreq = await axios.get(serverlink, {
+        const serreq = await aniwatchGet(serverlink, {
             headers: {
                 'User-Agent': USER_AGENT,
             }
