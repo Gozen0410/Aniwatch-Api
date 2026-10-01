@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -17,7 +18,7 @@ info.get('/related/:id', async function(req, res) {
         const animeinfo = req.params.id;
         const animeinfourl = `https://aniwatchtv.to/${animeinfo}`;
 
-        const animeinfofetch = await axios.get(animeinfourl, {
+        const animeinfofetch = await aniwatchGet(animeinfourl, {
             headers:{
                 'User-Agent':USER_AGENT,
             }
