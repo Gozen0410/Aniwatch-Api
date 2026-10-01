@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -11,7 +12,7 @@ random.use(cors());
 random.get('/random', async ( req, res)=>{
     try {
         const ranlink = `https://aniwatchtv.to/random`;
-    const randomlink = await axios.get(ranlink, {
+    const randomlink = await aniwatchGet(ranlink, {
         headers:{
             'User-Agent': USER_AGENT,
         }
