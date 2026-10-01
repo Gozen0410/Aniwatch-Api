@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -15,7 +16,7 @@ server.get('/server/:id', async ( req, res )=>{
     const serverlink = `https://aniwatchtv.to/ajax/v2/episode/servers?episodeId=${serverour}`;
 
     try {
-        const serverdefine = await axios.get(serverlink, {
+        const serverdefine = await aniwatchGet(serverlink, {
             headers:{
                 'User-Agent': USER_AGENT,
                 "Accept-Encoding": ACCEPT_ENCODING_HEADER,
