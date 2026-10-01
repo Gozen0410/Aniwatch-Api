@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -18,7 +19,7 @@ mix.get('/mix/:id/:page?', async ( req, res)=>{
     const mixlinkani = `https://aniwatchtv.to/${mixid}?page=${pagenumber +1}`;
 
     try {
-        const mixanime = await axios.get(mixlink, {
+        const mixanime = await aniwatchGet(mixlink, {
             headers:{
                 'User-Agent': USER_AGENT,
             }
@@ -27,7 +28,7 @@ mix.get('/mix/:id/:page?', async ( req, res)=>{
 
         const $ = cheerio.load(mixcomponet);
 
-        const nextpageani = await axios.get(mixlinkani, {
+        const nextpageani = await aniwatchGet(mixlinkani, {
             headers:{
                 'User-Agent': USER_AGENT,
             }
