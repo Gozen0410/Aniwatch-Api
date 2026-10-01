@@ -1,3 +1,4 @@
+const { aniwatchGet } = require('../aniwatchSite');
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -16,7 +17,7 @@ search.get('/search/:id/:page?', async (req , res)=>{
     const searchlinkani = `https://aniwatchtv.to/search?keyword=${searchdetails}&page=${pagenumber +1}`;
 
    try {
-    const searchmob = await axios.get(searchlink, {
+    const searchmob = await aniwatchGet(searchlink, {
         headers:{
             'User-Agent': USER_AGENT,
         }
@@ -27,7 +28,7 @@ search.get('/search/:id/:page?', async (req , res)=>{
 
     const searchYour = [];
 
-    const nextpageani = await axios.get(searchlinkani, {
+    const nextpageani = await aniwatchGet(searchlinkani, {
         headers:{
             'User-Agent': USER_AGENT,
         }
